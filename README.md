@@ -15,12 +15,12 @@ efficient strategy based on entropy loss, with the latter reducing computational
 ## File Structure
 
 ### Main Files
-- **`baseline.py`**: Contains the baseline implementation of the text detection model.
+- **`baseline.py`**: To obtain the baseline results using the full dataset.
 - **`dataset_loader.py`**: Handles loading and preprocessing of datasets for training and evaluation.
-- **`entropy.py`**: Implements entropy-based methods for text analysis and detection.
-- **`grid_search.py`**: Performs hyperparameter optimization for the models using grid search.
-- **`train_random.py`**: Trains models with random initialization.
-- **`train_transfer.py`**: Trains models using transfer learning techniques.
+- **`entropy.py`**: Implements entropy-based sampling methods.
+- **`grid_search.py`**: Performs small-medium-large percentage optimization for the models using grid search (including the balanced dataset).
+- **`train_random.py`**: Trains models with randomly sampled dataset.
+- **`train_transfer.py`**: Trains models on different domains.
 
 ### Folders
 - **`methods/`**: Includes various utility functions and model-specific methods for training and evaluation.
@@ -43,17 +43,24 @@ efficient strategy based on entropy loss, with the latter reducing computational
     ```bash
     pip install -r requirements.txt
     ```
-3. To run baseline method:
+3. Download the full dataset from the following link: https://github.com/Dongping-Chen/MixSet
+
+4. To run baseline method:
     ```bash
     python baseline.py
     ```
-4. To run grid search method:
+5. To run grid search method:
     ```bash
     python grid_search.py
     ```
-5. To run entropy ranking method:
+6. To run entropy ranking method:
     ```bash
     python entropy.py
     ```
-6. To fine-tune a qwen2.5-7b model, we recommend using LLaMA-Factory (installed following this link: https://github.com/hiyouga/LLaMA-Factory.git) and the provided configuration file `qwen-7b_lora_sft.yaml`.
+7. To fine-tune a qwen2.5-7b model, we recommend using LLaMA-Factory
+    (1) Install LLaMA-Factory following this link: https://github.com/hiyouga/LLaMA-Factory
+    (2) Run the script:
+    ```bash
+    llamafactory-cli train qwen-7b_lora_sft.yaml
+    ```
 
